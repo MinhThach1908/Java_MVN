@@ -19,5 +19,6 @@ public class JavaApplication {
         user.setStatus(1);
 
         userRepository.save2(user);
+        userRepository.findAll();
     }
 }
