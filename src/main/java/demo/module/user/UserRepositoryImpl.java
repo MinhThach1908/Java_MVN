@@ -4,7 +4,7 @@ import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-public class UserRepository {
+public class UserRepositoryImpl {
 
     public void save(User user) {
         // 1. Mở kết nối đến database.

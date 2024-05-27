@@ -1,13 +1,13 @@
 package demo.module;
 
 import demo.module.user.User;
-import demo.module.user.UserRepository;
+import demo.module.user.UserRepositoryImpl;
 
 import java.time.LocalDate;
 
 public class JavaApplication {
     public static void main(String[] args) {
-        UserRepository userRepository = new UserRepository();
+        UserRepositoryImpl userRepositoryImpl = new UserRepositoryImpl();
 
         User user = new User();
         user.setUsername("quanghuy");
@@ -18,7 +18,7 @@ public class JavaApplication {
         user.setDob(LocalDate.now());
         user.setStatus(1);
 
-        userRepository.save2(user);
-        userRepository.findAll();
+        userRepositoryImpl.save2(user);
+        userRepositoryImpl.findAll();
     }
 }
