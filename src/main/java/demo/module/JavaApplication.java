@@ -1,4 +1,4 @@
-package demo;
+package demo.module;
 
 import demo.module.user.*;
 
