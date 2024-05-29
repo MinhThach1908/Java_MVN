@@ -1,39 +1,52 @@
-package demo.module;
+package demo;
 
-import demo.module.user.MySqlUserRepository;
-import demo.module.user.User;
-import demo.module.user.UserRepository;
+import demo.module.user.*;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class JavaApplication {
     public static void main(String[] args) {
-        UserRepository userRepository = new MySqlUserRepository();
-        Scanner scanner = new Scanner(System.in);
-        // Xử lý thêm user.
-        User user = new User();
-        System.out.println("Enter username: ");
-        user.setUsername(scanner.nextLine());
-        System.out.println("Enter password: ");
-        user.setPassword(scanner.nextLine());
-        System.out.println("Enter fullname: ");
-        user.setFullName(scanner.nextLine());
-        System.out.println("Enter identityCard: ");
-        user.setIdentityCard(scanner.nextLine());
-        System.out.println("Enter phone: ");
-        user.setPhone(scanner.nextLine());
-        System.out.println("Enter dob: ");
-        user.setDob(LocalDate.parse(scanner.nextLine()));
-        System.out.println("Enter status: ");
-        user.setStatus(scanner.nextInt());
-        scanner.nextLine();
-        userRepository.save(user);
-        // Xử lý hiển thị user.
-        ArrayList<User> list = userRepository.findAll();
-        for (User u : list){
-            System.out.println(u.getId() + " - " + u.getUsername() + " - " + u.getDob());
+        createMenu();
+    }
+
+    public static void createMenu(){
+        Scanner sc = new Scanner(System.in);
+        UserController userController = new UserController();
+        while(true){
+            System.out.println("User Management Menu.");
+            System.out.println("------------------------------------");
+            System.out.println("1. Create User.");
+            System.out.println("2. View List User.");
+            System.out.println("3. Update User.");
+            System.out.println("4. Delete User.");
+            System.out.println("5. Exit Application.");
+            System.out.println("------------------------------------");
+            System.out.println("Please enter your choice: ");
+            int choice = sc.nextInt();
+            switch (choice){
+                case 1:
+                    userController.create();
+                    break;
+                case 2:
+                    userController.showList();
+                    break;
+                case 3:
+                    userController.update();
+                    break;
+                case 4:
+                    userController.delete();
+                    break;
+                case 5:
+                    System.out.println("Exit Application.");
+                    break;
+                default:
+                    System.out.println("Invalid choice.");
+                    break;
+            }
+            if(choice == 5){
+                break;
+            }
         }
+
     }
 }
