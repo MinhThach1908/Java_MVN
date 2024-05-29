@@ -23,9 +23,7 @@ public class MySqlUserRepository implements UserRepository{
         try {
             // 1. Mở kết nối đến database.
             Connection connection =
-                    DriverManager.getConnection(MYSQL_CONNECTION_STRING,
-                            MYSQL_USERNAME,
-                            MYSQL_PASSWORD);
+                    DriverManager.getConnection(MYSQL_CONNECTION_STRING, MYSQL_USERNAME, MYSQL_PASSWORD);
             // 2. Tạo câu lệnh prepareStatement
             String prepareSql = "select * from users where status = 1";
             PreparedStatement preparedStatement = connection.prepareStatement(prepareSql);
@@ -65,9 +63,7 @@ public class MySqlUserRepository implements UserRepository{
         try {
             // 1. Mở kết nối đến database.
             Connection connection =
-                    DriverManager.getConnection(MYSQL_CONNECTION_STRING,
-                            MYSQL_USERNAME,
-                            MYSQL_PASSWORD);
+                    DriverManager.getConnection(MYSQL_CONNECTION_STRING, MYSQL_USERNAME, MYSQL_PASSWORD);
             // 2. Tạo câu lệnh prepareStatement
             String prepareSql = "select * from users where id = ?"; // có tham số id.
             PreparedStatement preparedStatement = connection.prepareStatement(prepareSql);
@@ -105,15 +101,10 @@ public class MySqlUserRepository implements UserRepository{
         try {
             // 1. Mở kết nối đến database.
             Connection connection =
-                    DriverManager.getConnection(MYSQL_CONNECTION_STRING,
-                            MYSQL_USERNAME,
-                            MYSQL_PASSWORD);
+                    DriverManager.getConnection(MYSQL_CONNECTION_STRING, MYSQL_USERNAME, MYSQL_PASSWORD);
             // 2. Tạo câu lệnh prepareStatement
             String prepareSql =
-                    "insert into users "
-                            + "(username, password, full_name, identity_card, phone, dob, status) "
-                            + "values "
-                            + "(?, ?, ?, ?, ?, ?, ?)";
+                    "insert into users " + "(username, password, full_name, identity_card, phone, dob, status) " + "values " + "(?, ?, ?, ?, ?, ?, ?)";
             PreparedStatement preparedStatement = connection.prepareStatement(prepareSql);
             // 3. Thực thi câu lệnh
             preparedStatement.setString(1, user.getUsername());
@@ -139,13 +130,10 @@ public class MySqlUserRepository implements UserRepository{
         try {
             // 1. Mở kết nối đến database.
             Connection connection =
-                    DriverManager.getConnection(MYSQL_CONNECTION_STRING,
-                            MYSQL_USERNAME,
-                            MYSQL_PASSWORD);
+                    DriverManager.getConnection(MYSQL_CONNECTION_STRING, MYSQL_USERNAME, MYSQL_PASSWORD);
             // 2. Tạo câu lệnh prepareStatement
             String prepareSql =
-                    "update users set username = ?, password = ?, full_name = ?, " +
-                            "identity_card = ?, phone = ?, dob = ?, status = ? where id = ?";
+                    "update users set username = ?, password = ?, full_name = ?, " + "identity_card = ?, phone = ?, dob = ?, status = ? where id = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(prepareSql);
             // 3. Thực thi câu lệnh
             preparedStatement.setString(1, user.getUsername());
@@ -174,9 +162,7 @@ public class MySqlUserRepository implements UserRepository{
         try {
             // 1. Mở kết nối đến database.
             Connection connection =
-                    DriverManager.getConnection(MYSQL_CONNECTION_STRING,
-                            MYSQL_USERNAME,
-                            MYSQL_PASSWORD);
+                    DriverManager.getConnection(MYSQL_CONNECTION_STRING, MYSQL_USERNAME, MYSQL_PASSWORD);
             // 2. Tạo câu lệnh prepareStatement
             String prepareSql =
                     "update users set status = -1 where id = ?";
